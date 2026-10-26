@@ -1,0 +1,1230 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gobernanza La Juana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F6F2; --paper-2:#FFFFFF; --paper-3:#ECE9E1;
+  --ink:#1C1A17; --ink-2:#5B564D; --ink-3:#8A8477;
+  --rule:#DEDAD0; --rule-strong:#C3BDAE;
+
+  /* órganos: una identidad de color por órgano, usada en títulos, bordes y diagrama */
+  --c-asamblea:#5B3FC4;    --c-asamblea-bg:#EDE8FA;
+  --c-consejo:#0E7EA6;     --c-consejo-bg:#E2F1F5;
+  --c-admin:#8F2B59;       --c-admin-bg:#F7E6EE;
+  --c-intendente:#2E62B8;  --c-intendente-bg:#E7EEFA;
+  --c-mant:#B85A1A;        --c-mant-bg:#F7E9DA;
+  --c-seg:#8E2438;         --c-seg-bg:#F6E2E5;
+
+  /* comisiones sin órgano espejo */
+  --c-legales:#3F4B8C; --c-verde:#3F8F4A; --c-arq:#8A6A3F;
+  --c-conviv:#B5586F; --c-social:#A9790F;
+
+  --accent:var(--c-consejo); --accent-soft:var(--c-consejo-bg);
+
+  /* estados del documento: vigente / propuesto / a definir / crítico */
+  --vig:#1E8A5F; --vig-bg:#DCEFE3;
+  --prop:#B8750E; --prop-bg:#F6E8CF;
+  --def:#55678C; --def-bg:#E4E8F0;
+  --crit:#C23B3B; --crit-bg:#F6E1DE;
+
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15130F; --paper-2:#1E1C17; --paper-3:#262319;
+    --ink:#F2EFE8; --ink-2:#B9B2A3; --ink-3:#8D8575;
+    --rule:#332F26; --rule-strong:#4A4436;
+
+    --c-asamblea:#A98FEF;    --c-asamblea-bg:#241E3A;
+    --c-consejo:#4FC7E8;     --c-consejo-bg:#16292E;
+    --c-admin:#E8739E;       --c-admin-bg:#301C26;
+    --c-intendente:#86ABEE;  --c-intendente-bg:#1A2436;
+    --c-mant:#E39A4E;        --c-mant-bg:#2E2015;
+    --c-seg:#E3808F;         --c-seg-bg:#301A1E;
+
+    --c-legales:#9FACEA; --c-verde:#7FD98C; --c-arq:#D1B583;
+    --c-conviv:#E89AAE; --c-social:#E8C258;
+
+    --accent:var(--c-consejo); --accent-soft:var(--c-consejo-bg);
+
+    --vig:#5FCB9A; --vig-bg:#15271E;
+    --prop:#E8AD5C; --prop-bg:#2E2515;
+    --def:#9FAFD1; --def-bg:#1E2230;
+    --crit:#E88080; --crit-bg:#2E1C1C;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15130F; --paper-2:#1E1C17; --paper-3:#262319;
+  --ink:#F2EFE8; --ink-2:#B9B2A3; --ink-3:#8D8575;
+  --rule:#332F26; --rule-strong:#4A4436;
+
+  --c-asamblea:#A98FEF;    --c-asamblea-bg:#241E3A;
+  --c-consejo:#4FC7E8;     --c-consejo-bg:#16292E;
+  --c-admin:#E8739E;       --c-admin-bg:#301C26;
+  --c-intendente:#86ABEE;  --c-intendente-bg:#1A2436;
+  --c-mant:#E39A4E;        --c-mant-bg:#2E2015;
+  --c-seg:#E3808F;         --c-seg-bg:#301A1E;
+
+  --c-legales:#9FACEA; --c-verde:#7FD98C; --c-arq:#D1B583;
+  --c-conviv:#E89AAE; --c-social:#E8C258;
+
+  --accent:var(--c-consejo); --accent-soft:var(--c-consejo-bg);
+
+  --vig:#5FCB9A; --vig-bg:#15271E;
+  --prop:#E8AD5C; --prop-bg:#2E2515;
+  --def:#9FAFD1; --def-bg:#1E2230;
+  --crit:#E88080; --crit-bg:#2E1C1C;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:15.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding:0 20px; margin:0;
+}
+.wrap{max-width:1140px; margin:0 auto}
+p{margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ── type scale ───────────────────────────────── */
+h1,h2,h3,h4{font-family:var(--serif); font-weight:500; margin:0; text-wrap:balance; letter-spacing:-.008em}
+h1{font-size:clamp(2.6rem,6.4vw,4.1rem); line-height:1.02; letter-spacing:-.025em}
+h2{font-size:clamp(1.55rem,3.4vw,2.1rem); line-height:1.12}
+h3{font-size:1.2rem; line-height:1.25}
+h4{font-size:1.02rem; line-height:1.3}
+.lede{font-family:var(--serif); font-size:clamp(1.08rem,2.1vw,1.3rem); line-height:1.5; color:var(--ink-2); max-width:62ch}
+.prose{max-width:68ch; color:var(--ink-2)}
+.eyebrow{font-family:var(--mono); font-size:.69rem; letter-spacing:.17em; text-transform:uppercase; color:var(--ink-3)}
+.ref{font-family:var(--mono); font-size:.68rem; color:var(--ink-3); letter-spacing:.04em}
+
+/* ── masthead ─────────────────────────────────── */
+.masthead{padding-block:52px 0}
+.crest{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:26px}
+.crest .mark{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--accent); border:1px solid var(--rule-strong); padding:5px 9px;
+}
+.crest .where{font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3)}
+h1 .sub{display:block; font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:clamp(1.15rem,2.6vw,1.65rem); letter-spacing:0; color:var(--ink-3); margin-top:12px}
+.masthead .lede{margin-top:24px}
+
+.facts{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(142px,1fr)); gap:1px;
+  background:var(--rule); border-block:1px solid var(--rule);
+  margin-top:40px;
+}
+.fact{background:var(--paper); padding:19px 18px 18px; position:relative}
+.fact::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--rule-strong)}
+.fact.f-asamblea::before{background:var(--c-asamblea)}
+.fact.f-consejo::before{background:var(--c-consejo)}
+.fact.f-operacion::before{background:linear-gradient(90deg,var(--c-intendente) 0 50%,var(--c-mant) 50% 100%)}
+.fact.f-comisiones::before{background:linear-gradient(90deg,var(--c-admin),var(--c-legales),var(--c-verde),var(--c-arq),var(--c-mant),var(--c-seg))}
+.fact dt{font-family:var(--mono); font-size:.65rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin-bottom:7px}
+.fact dd{margin:0; font-family:var(--serif); font-size:1.45rem; line-height:1.05; font-variant-numeric:tabular-nums}
+.fact dd small{display:block; font-family:var(--sans); font-size:.76rem; line-height:1.35; color:var(--ink-3); margin-top:6px; letter-spacing:0}
+
+/* ── nav ──────────────────────────────────────── */
+.nav{
+  position:sticky; top:0; z-index:20; background:var(--paper);
+  border-bottom:1px solid var(--rule); margin-top:0;
+}
+.nav .inner{display:flex; gap:0; overflow-x:auto; max-width:1140px; margin:0 auto; scrollbar-width:thin}
+.nav a{
+  flex:0 0 auto; font-family:var(--mono); font-size:.7rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-3); text-decoration:none; padding:13px 15px 12px; border-bottom:2px solid transparent; white-space:nowrap;
+}
+.nav a:hover{color:var(--ink); border-bottom-color:var(--rule-strong)}
+
+/* ── sections ─────────────────────────────────── */
+section{padding-block:58px}
+section + section{border-top:1px solid var(--rule)}
+.s-head{display:flex; gap:20px; align-items:flex-start; margin-bottom:30px; flex-wrap:wrap}
+.s-num{
+  font-family:var(--mono); font-size:.75rem; color:var(--accent); padding-top:9px;
+  letter-spacing:.08em; flex:0 0 auto;
+}
+.s-head .txt{flex:1 1 320px; min-width:0}
+.s-head h2{margin-bottom:10px}
+
+/* ── state legend ─────────────────────────────── */
+.legend{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px}
+.chip{
+  display:inline-flex; align-items:center; gap:7px; font-family:var(--mono);
+  font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; padding:4px 9px 4px 7px;
+  border:1px solid currentColor; white-space:nowrap;
+}
+.chip::before{content:""; width:8px; height:8px; background:currentColor; flex:0 0 auto}
+.c-vig{color:var(--vig)} .c-prop{color:var(--prop)} .c-def{color:var(--def)} .c-crit{color:var(--crit)}
+.legend p{font-size:.84rem; color:var(--ink-3); flex:1 1 220px; min-width:200px}
+
+/* ── diagram ──────────────────────────────────── */
+figure{margin:0}
+.fig-scroll{overflow-x:auto; border:1px solid var(--rule); background:var(--paper-2); padding:22px 20px}
+.fig-scroll svg{display:block; min-width:720px; max-width:100%; height:auto; color:var(--ink)}
+figcaption{font-size:.87rem; color:var(--ink-3); margin-top:14px; max-width:72ch}
+.dg-box{fill:var(--paper-2); stroke:var(--rule-strong)}
+.dg-box-top{fill:var(--c-asamblea-bg); stroke:var(--c-asamblea); stroke-width:1.6}
+.dg-box-hinge{fill:var(--c-consejo-bg); stroke:var(--c-consejo); stroke-width:1.8}
+.dg-intendente{fill:var(--c-intendente-bg); stroke:var(--c-intendente); stroke-width:1.4}
+.dg-admin{fill:var(--c-admin-bg); stroke:var(--c-admin); stroke-width:1.4}
+.dg-mant{fill:var(--c-mant-bg); stroke:var(--c-mant); stroke-width:1.4}
+.dg-seg{fill:var(--c-seg-bg); stroke:var(--c-seg); stroke-width:1.4}
+.dg-swatch{stroke:none}
+.dg-t{font-family:var(--mono); font-size:11.5px; letter-spacing:.09em; fill:currentColor}
+.dg-t-lg{font-family:var(--mono); font-size:13px; letter-spacing:.12em; fill:currentColor}
+.dg-t-sm{font-family:var(--mono); font-size:9.6px; letter-spacing:.03em; fill:var(--ink-3)}
+.dg-lbl{font-family:var(--mono); font-size:10px; letter-spacing:.05em; fill:var(--ink-3)}
+.dg-down{stroke:var(--ink-2); stroke-width:1.4; fill:none}
+.dg-up{stroke:var(--accent); stroke-width:1.4; fill:none; stroke-dasharray:5 4}
+
+/* ── organ blocks ─────────────────────────────── */
+.organ{border-top:3px solid var(--organ,var(--ink)); padding-top:20px; margin-top:38px}
+.organ:first-of-type{margin-top:0}
+.organ-hd{display:flex; gap:16px; align-items:baseline; flex-wrap:wrap; margin-bottom:6px}
+.organ-hd h3{font-size:1.42rem; color:var(--organ,var(--ink))}
+.org-asamblea{--organ:var(--c-asamblea)}
+.org-consejo{--organ:var(--c-consejo)}
+.org-admin{--organ:var(--c-admin)}
+.org-intendente{--organ:var(--c-intendente)}
+.org-mant{--organ:var(--c-mant)}
+.org-seg{--organ:var(--c-seg)}
+.organ-role{font-family:var(--serif); font-style:italic; color:var(--ink-2); max-width:70ch; margin-bottom:22px}
+.cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--rule)}
+.col{background:var(--paper); padding:18px 18px 20px}
+.col.no{background:var(--crit-bg)}
+.col h4{font-family:var(--mono); font-size:.67rem; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:var(--ink-3); margin-bottom:12px}
+.col.no h4{color:var(--crit)}
+.col ul{margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:9px}
+.col li{font-size:.9rem; line-height:1.48; padding-left:15px; position:relative; color:var(--ink-2)}
+.col li::before{content:"—"; position:absolute; left:0; color:var(--rule-strong)}
+.col.no li{color:var(--ink-2)}
+.col.no li::before{content:"×"; color:var(--crit); font-family:var(--mono)}
+
+/* ── tables ───────────────────────────────────── */
+.t-scroll{overflow-x:auto; border:1px solid var(--rule)}
+table{border-collapse:collapse; width:100%; min-width:680px; font-size:.87rem}
+caption{text-align:left; font-size:.85rem; color:var(--ink-3); padding-bottom:12px; max-width:72ch}
+th,td{text-align:left; padding:10px 13px; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.11em; text-transform:uppercase;
+  font-weight:500; color:var(--ink-3); background:var(--paper-3); border-bottom:1px solid var(--rule-strong);
+  position:sticky; top:0;
+}
+.th-asamblea{background:var(--c-asamblea-bg); color:var(--c-asamblea); border-bottom-color:var(--c-asamblea)}
+.th-consejo{background:var(--c-consejo-bg); color:var(--c-consejo); border-bottom-color:var(--c-consejo)}
+.th-admin{background:var(--c-admin-bg); color:var(--c-admin); border-bottom-color:var(--c-admin)}
+.th-intendente{background:var(--c-intendente-bg); color:var(--c-intendente); border-bottom-color:var(--c-intendente)}
+.th-mant{background:var(--c-mant-bg); color:var(--c-mant); border-bottom-color:var(--c-mant)}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--paper-2)}
+td.lead{font-weight:500; color:var(--ink)}
+.num{font-variant-numeric:tabular-nums; font-family:var(--mono); font-size:.82rem}
+.who{display:inline-block; font-family:var(--mono); font-size:.76rem; font-weight:500;
+  padding:2px 7px; border:1px solid currentColor; white-space:nowrap}
+.who-asamblea{color:var(--c-asamblea)} .who-consejo{color:var(--c-consejo)}
+.who-admin{color:var(--c-admin)} .who-intendente{color:var(--c-intendente)}
+.raci th:not(:first-child),.raci td:not(:first-child){text-align:center; width:76px}
+.badge{
+  display:inline-block; font-family:var(--mono); font-size:.72rem; font-weight:500;
+  min-width:20px; padding:2px 5px; border:1px solid var(--rule-strong); color:var(--ink-2);
+}
+.badge.d{background:var(--accent); border-color:var(--accent); color:var(--paper)}
+.badge.r{border-color:var(--accent); color:var(--accent)}
+.dash{color:var(--rule-strong)}
+
+/* ── flow strips ──────────────────────────────── */
+.flow{border:1px solid var(--rule); background:var(--paper-2); padding:20px}
+.flow h4{margin-bottom:16px}
+.steps{display:flex; flex-wrap:wrap; gap:8px; align-items:stretch}
+.step{
+  flex:1 1 150px; min-width:140px; border-left:2px solid var(--accent); background:var(--paper);
+  padding:11px 13px 13px;
+}
+.step .k{font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:5px}
+.step .v{font-size:.86rem; line-height:1.42; color:var(--ink)}
+.step.esc{border-left-color:var(--prop)}
+.flow-note{font-size:.84rem; color:var(--ink-3); margin-top:14px; max-width:72ch}
+.flows{display:grid; gap:20px}
+
+/* ── risk list ────────────────────────────────── */
+.risks{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.risk{background:var(--paper); padding:16px 18px; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:6px 22px}
+.risk .rk{font-weight:500; display:flex; gap:9px; align-items:baseline; flex-wrap:wrap}
+.risk .mt{font-size:.87rem; color:var(--ink-2)}
+.risk .mt b{font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); font-weight:500; display:block; margin-bottom:3px}
+.sev{font-family:var(--mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; padding:2px 6px; border:1px solid currentColor; flex:0 0 auto}
+.sev.alto{color:var(--crit)} .sev.medio{color:var(--prop)}
+
+/* ── commissions ──────────────────────────────── */
+.coms{display:grid; grid-template-columns:repeat(auto-fit,minmax(252px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.com{background:var(--paper); padding:17px 18px 19px; display:flex; flex-direction:column; gap:9px;
+  border-left:4px solid var(--com,var(--rule-strong))}
+.com.new{background:var(--prop-bg)}
+.com .nm{font-family:var(--serif); font-size:1.08rem; font-weight:500; line-height:1.2; display:flex; align-items:center; gap:9px}
+.com .nm::before{content:""; width:9px; height:9px; flex:0 0 auto; background:var(--com,var(--rule-strong))}
+.com .pp{font-size:.86rem; color:var(--ink-2); line-height:1.47}
+.com .tags{font-family:var(--mono); font-size:.65rem; letter-spacing:.04em; color:var(--ink-3); line-height:1.6; margin-top:auto; padding-top:4px; border-top:1px solid var(--rule)}
+.com-fiscal{--com:var(--c-admin)} .com-legales{--com:var(--c-legales)}
+.com-verde{--com:var(--c-verde)} .com-arq{--com:var(--c-arq)}
+.com-infra{--com:var(--c-mant)} .com-seg{--com:var(--c-seg)}
+.com-conviv{--com:var(--c-conviv)} .com-comunic{--com:var(--c-intendente)}
+.com-datos{--com:var(--c-consejo)} .com-social{--com:var(--c-social)}
+.com-ambiente{--com:var(--c-verde)} .com-electoral{--com:var(--c-asamblea)}
+
+/* ── pending checklist ────────────────────────── */
+.pend{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:26px 34px}
+.pend h4{font-family:var(--mono); font-size:.67rem; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:var(--def); margin-bottom:12px; padding-bottom:7px; border-bottom:1px solid var(--rule)}
+.pend ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px}
+.pend li{font-size:.88rem; line-height:1.45; color:var(--ink-2); padding-left:24px; position:relative}
+.pend li::before{content:""; position:absolute; left:0; top:4px; width:11px; height:11px; border:1.5px solid var(--rule-strong)}
+.pend li.hot::before{border-color:var(--crit)}
+.pend li.hot{color:var(--ink)}
+
+/* ── closing ──────────────────────────────────── */
+.next{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:30px}
+.nx{background:var(--paper); padding:18px}
+.nx .n{font-family:var(--mono); font-size:.72rem; color:var(--accent); letter-spacing:.1em; display:block; margin-bottom:9px}
+.nx p{font-size:.89rem; line-height:1.48; color:var(--ink-2)}
+footer{border-top:1px solid var(--rule); padding-block:28px 46px; display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap}
+footer .ref{line-height:1.7}
+
+@media (max-width:620px){
+  .risk{grid-template-columns:1fr}
+  section{padding-block:44px}
+  .masthead{padding-block:38px 0}
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header class="masthead">
+  <div class="crest">
+    <span class="mark">Propiedad Horizontal</span>
+    <span class="where">Conjunto inmobiliario &middot; 271 lotes &middot; padrón 11.484</span>
+  </div>
+  <h1>Barrio La&nbsp;Juana
+    <span class="sub">Marco de gobernanza: órganos, roles y competencias</span>
+  </h1>
+  <p class="lede">La Asamblea manda. El Administrador ejecuta, cobra y —desde 2024— representa
+    legalmente al barrio. El Consejo controla, instruye y arbitra. El Intendente hace que el
+    barrio funcione cada día. Las Comisiones piensan, normalizan y auditan. Este documento se
+    apoya en los cuatro reglamentos reales de la copropiedad (R1–R4) y marca dónde todavía
+    falta decidir.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Unidades</dt><dd>271<small>lotes, cada uno con porcentual sobre partes comunes (R1/R4)</small></dd></div>
+    <div class="fact f-asamblea"><dt>Soberano</dt><dd>Asamblea<small>mayoría simple, absoluta o agravada según la materia</small></dd></div>
+    <div class="fact f-consejo"><dt>Consejo</dt><dd>5 · 2 años<small>vecinos electos, cargo honorario</small></dd></div>
+    <div class="fact f-operacion"><dt>Operación</dt><dd>L–S 8–17<small>Intendente + jefe de mantenimiento y 3 operarios</small></dd></div>
+    <div class="fact f-comisiones"><dt>Comisiones</dt><dd>5 → 12<small>cinco vigentes, siete propuestas</small></dd></div>
+  </dl>
+
+  <div class="legend">
+    <span class="chip c-vig">Vigente</span>
+    <span class="chip c-prop">Propuesto</span>
+    <span class="chip c-def">A definir</span>
+    <p>Todo lo marcado <b>propuesto</b> requiere resolución del Consejo o de la Asamblea según
+      la materia. Lo marcado <b>a definir</b> depende de datos que no están en los cuatro
+      reglamentos revisados (R1–R4) o de actas de Asamblea posteriores a agosto de 2026.</p>
+  </div>
+</header>
+</div>
+
+<nav class="nav" aria-label="Secciones">
+  <div class="inner">
+    <a href="#estructura">Estructura</a>
+    <a href="#organos">Órganos y roles</a>
+    <a href="#comisiones">Comisiones</a>
+    <a href="#matriz">Quién decide qué</a>
+    <a href="#umbrales">Umbrales de gasto</a>
+    <a href="#flujos">Flujos</a>
+    <a href="#riesgos">Riesgos</a>
+    <a href="#pendientes">Pendientes</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ════════ ESTRUCTURA ════════ -->
+<section id="estructura">
+  <div class="s-head">
+    <span class="s-num">§3</span>
+    <div class="txt">
+      <h2>Cómo baja la autoridad y cómo sube la rendición</h2>
+      <p class="prose">La estructura no es un organigrama de jerarquías personales: son dos
+        circuitos opuestos sobre los mismos nodos. La autoridad se delega hacia abajo y es
+        siempre revocable; la rendición de cuentas sube y es siempre obligatoria. El Consejo
+        es la bisagra: no maneja dinero ni da órdenes al personal de campo, pero sin su
+        resolución nada que exceda la rutina avanza.</p>
+    </div>
+  </div>
+
+  <figure>
+    <div class="fig-scroll">
+      <svg viewBox="0 0 960 646" role="img" aria-label="Diagrama: la Asamblea designa al Consejo y al Administrador; el Consejo controla e instruye al Administrador y al Intendente dentro de las pautas que fija la Asamblea; el Administrador ejecuta, cobra y representa legalmente al barrio; la rendición de cuentas vuelve en sentido inverso hasta la Asamblea.">
+        <defs>
+          <marker id="aDown" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <polygon points="0,1.2 9,5 0,8.8" fill="var(--ink-2)"></polygon>
+          </marker>
+          <marker id="aUp" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <polygon points="0,1.2 9,5 0,8.8" fill="var(--accent)"></polygon>
+          </marker>
+        </defs>
+
+        <!-- ASAMBLEA -->
+        <rect class="dg-box-top" x="140" y="24" width="680" height="60"></rect>
+        <text class="dg-t-lg" x="480" y="50" text-anchor="middle">ASAMBLEA DE COPROPIETARIOS</text>
+        <text class="dg-t-sm" x="480" y="68" text-anchor="middle">autoridad suprema · 271 lotes · R2 art. 25.1</text>
+
+        <!-- CONSEJO -->
+        <rect class="dg-box-hinge" x="330" y="168" width="300" height="74"></rect>
+        <text class="dg-t" x="480" y="195" text-anchor="middle">CONSEJO · 5 miembros</text>
+        <text class="dg-t-sm" x="480" y="212" text-anchor="middle">mandato 2 años · R2 art. 24</text>
+        <text class="dg-t-sm" x="480" y="228" text-anchor="middle">controla · instruye · arbitra</text>
+
+        <!-- INTENDENTE -->
+        <rect class="dg-intendente" x="330" y="320" width="300" height="74"></rect>
+        <text class="dg-t" x="480" y="347" text-anchor="middle">INTENDENTE</text>
+        <text class="dg-t-sm" x="480" y="364" text-anchor="middle">presencia continua L–S 8:00–17:00</text>
+        <text class="dg-t-sm" x="480" y="380" text-anchor="middle">punto único de contacto del vecino</text>
+
+        <!-- COMISIONES -->
+        <rect class="dg-box" x="30" y="282" width="250" height="212"></rect>
+        <text class="dg-t" x="48" y="308">COMISIONES</text>
+        <text class="dg-t-sm" x="48" y="326">técnicas · consultivas · honorarias</text>
+        <line x1="48" y1="338" x2="262" y2="338" stroke="var(--rule)" stroke-width="1"></line>
+        <rect class="dg-swatch" x="48" y="351" width="7" height="7" fill="var(--c-admin)"></rect>
+        <text class="dg-t-sm" x="62" y="357">Fiscal</text>
+        <rect class="dg-swatch" x="48" y="369" width="7" height="7" fill="var(--c-legales)"></rect>
+        <text class="dg-t-sm" x="62" y="375">Legales</text>
+        <rect class="dg-swatch" x="48" y="387" width="7" height="7" fill="var(--c-verde)"></rect>
+        <text class="dg-t-sm" x="62" y="393">Áreas Verdes</text>
+        <rect class="dg-swatch" x="48" y="405" width="7" height="7" fill="var(--c-arq)"></rect>
+        <text class="dg-t-sm" x="62" y="411">Arquitectura</text>
+        <rect class="dg-swatch" x="48" y="423" width="7" height="7" fill="var(--c-mant)"></rect>
+        <text class="dg-t-sm" x="62" y="429">Infraestructura y Mantenimiento</text>
+        <text class="dg-t-sm" x="48" y="453">+ Seguridad, Convivencia, Comunicación,</text>
+        <text class="dg-t-sm" x="48" y="469">Datos, Social, Ambiente, Electoral</text>
+        <text class="dg-t-sm" x="48" y="485">(propuestas)</text>
+
+        <!-- ADMINISTRADOR -->
+        <rect class="dg-admin" x="680" y="282" width="250" height="100"></rect>
+        <text class="dg-t" x="698" y="308">ADMINISTRADOR</text>
+        <text class="dg-t-sm" x="698" y="328">expensas · pagos · sueldos</text>
+        <text class="dg-t-sm" x="698" y="344">representación legal · R2 art.28</text>
+        <text class="dg-t-sm" x="698" y="360">contabilidad · rendición mensual</text>
+
+        <!-- OPERACIONES -->
+        <rect class="dg-mant" x="290" y="470" width="180" height="76"></rect>
+        <text class="dg-t" x="380" y="496" text-anchor="middle">MANTENIMIENTO</text>
+        <text class="dg-t-sm" x="380" y="514" text-anchor="middle">tercerizado · jefe + 3</text>
+        <text class="dg-t-sm" x="380" y="530" text-anchor="middle">agua · osmosis · bombas · luz</text>
+
+        <rect class="dg-seg" x="500" y="470" width="180" height="76"></rect>
+        <text class="dg-t" x="590" y="496" text-anchor="middle">SEGURIDAD</text>
+        <text class="dg-t-sm" x="590" y="514" text-anchor="middle">tercerizado</text>
+        <text class="dg-t-sm" x="590" y="530" text-anchor="middle">accesos · perímetro · portería</text>
+
+        <!-- Asamblea -> Consejo -->
+        <line class="dg-down" x1="462" y1="86" x2="462" y2="160" marker-end="url(#aDown)"></line>
+        <text class="dg-lbl" x="452" y="116" text-anchor="end">elige · delega</text>
+        <text class="dg-lbl" x="452" y="132" text-anchor="end">revoca</text>
+        <line class="dg-up" x1="498" y1="160" x2="498" y2="88" marker-end="url(#aUp)"></line>
+        <text class="dg-lbl" x="508" y="116">rinde cuentas</text>
+        <text class="dg-lbl" x="508" y="132">memoria anual</text>
+
+        <!-- Consejo -> Intendente -->
+        <line class="dg-down" x1="462" y1="246" x2="462" y2="312" marker-end="url(#aDown)"></line>
+        <text class="dg-lbl" x="452" y="284" text-anchor="end">lineamientos</text>
+        <line class="dg-up" x1="498" y1="312" x2="498" y2="248" marker-end="url(#aUp)"></line>
+        <text class="dg-lbl" x="508" y="284">parte semanal</text>
+
+        <!-- Consejo <-> Comisiones -->
+        <polyline class="dg-down" points="326,186 155,186 155,274" marker-end="url(#aDown)"></polyline>
+        <text class="dg-lbl" x="242" y="178" text-anchor="middle">integra · encomienda</text>
+        <polyline class="dg-up" points="230,274 230,222 322,222" marker-end="url(#aUp)"></polyline>
+        <text class="dg-lbl" x="276" y="240" text-anchor="middle">dictamen escrito</text>
+
+        <!-- Consejo <-> Administracion -->
+        <polyline class="dg-down" points="634,186 805,186 805,274" marker-end="url(#aDown)"></polyline>
+        <text class="dg-lbl" x="718" y="178" text-anchor="middle">supervisa · instruye</text>
+        <polyline class="dg-up" points="730,274 730,222 638,222" marker-end="url(#aUp)"></polyline>
+        <text class="dg-lbl" x="700" y="240" text-anchor="middle">rendición mensual</text>
+
+        <!-- Asamblea -> Administracion -->
+        <polyline class="dg-down" points="820,54 895,54 895,274" marker-end="url(#aDown)"></polyline>
+        <text class="dg-lbl" x="886" y="150" text-anchor="end">designa</text>
+        <text class="dg-lbl" x="886" y="166" text-anchor="end">remueve</text>
+
+        <!-- Intendente -> operaciones -->
+        <polyline class="dg-down" points="430,398 430,438 388,438 388,462" marker-end="url(#aDown)"></polyline>
+        <polyline class="dg-down" points="530,398 530,438 592,438 592,462" marker-end="url(#aDown)"></polyline>
+        <text class="dg-lbl" x="480" y="428" text-anchor="middle">coordina</text>
+
+        <!-- Administracion -> paga -->
+        <polyline class="dg-down" points="805,386 805,508 688,508" marker-end="url(#aDown)"></polyline>
+        <text class="dg-lbl" x="798" y="480" text-anchor="end">paga sueldos</text>
+        <text class="dg-lbl" x="798" y="496" text-anchor="end">y proveedores</text>
+
+        <!-- legend -->
+        <line x1="30" y1="588" x2="930" y2="588" stroke="var(--rule)" stroke-width="1"></line>
+        <line class="dg-down" x1="32" y1="616" x2="76" y2="616" marker-end="url(#aDown)"></line>
+        <text class="dg-lbl" x="88" y="620">autoridad delegada, siempre revocable</text>
+        <line class="dg-up" x1="380" y1="616" x2="424" y2="616" marker-end="url(#aUp)"></line>
+        <text class="dg-lbl" x="436" y="620">rendición, dictamen y escalamiento</text>
+      </svg>
+    </div>
+    <figcaption>Las dos lecturas del mismo mapa. Hacia abajo: nadie ejerce una facultad que
+      no le fue delegada por el nivel superior. Hacia arriba: todo nivel debe rendir ante
+      quien lo designó, y todo caso que exceda su competencia escala. La única vía de
+      apelación final es la Asamblea. <b>Desde la reforma de 2024, quien representa
+      legalmente al barrio y firma en su nombre es el Administrador — no el Consejo</b>
+      (R2 art. 28).</figcaption>
+  </figure>
+</section>
+
+<!-- ════════ ORGANOS ════════ -->
+<section id="organos">
+  <div class="s-head">
+    <span class="s-num">§4–10</span>
+    <div class="txt">
+      <h2>Los órganos y los roles</h2>
+      <p class="prose">Para cada uno: qué decide, de qué responde y —sobre todo— qué NO le
+        corresponde. Delimitar el límite es tan importante como enumerar la función: casi
+        todos los conflictos de gobernanza en un consorcio nacen de un órgano ejerciendo
+        una facultad que no tiene.</p>
+    </div>
+  </div>
+
+  <article class="organ org-asamblea">
+    <div class="organ-hd"><h3>Asamblea de Copropietarios</h3><span class="chip c-vig">Vigente</span><span class="ref">§4 · R2 art. 25.1</span></div>
+    <p class="organ-role">Autoridad suprema de administración y gobierno. La integran
+      <b>exclusivamente</b> quienes escrituraron definitivamente su unidad — no los promitentes
+      compradores. Sus resoluciones obligan a presentes y ausentes por igual.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>Competencia exclusiva</h4>
+        <ul>
+          <li>Fijar la cuota de gastos comunes y de membresía del Club (tope UI 800)</li>
+          <li>Rendición de cuentas y balance del ejercicio</li>
+          <li>Elección de los 5 miembros del Consejo</li>
+          <li>Designación del Administrador (período de 1 año)</li>
+          <li>Reparaciones extraordinarias o no urgentes, antes de ejecutarlas</li>
+          <li>Reforma del Reglamento Interno (mayoría simple) y del de Arquitectura (mayoría especial)</li>
+          <li>Elegir el banco y las facultades de actuación de las cuentas del consorcio</li>
+          <li>Creación y disolución de comisiones <span class="ref">(propuesto)</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Condiciones de validez</h4>
+        <ul>
+          <li>Convocatoria con <b>5 días hábiles</b> de antelación, por carta o al domicilio electrónico declarado</li>
+          <li>Quórum: mayoría de copropietarios en 1.ª citación; pasada 1 h, sesiona con los presentes</li>
+          <li>Mayoría simple de presentes, salvo mayoría absoluta o especial según la materia</li>
+          <li>Voto a mano alzada, 1 voto por unidad, en cualquier modalidad</li>
+          <li>Actas firmadas por 3 asambleístas designados en la sesión</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>No admitido</h4>
+        <ul>
+          <li>Decidir sobre temas fuera del orden del día</li>
+          <li>Votar con 3+ meses de atraso en expensas o cuota de membresía (sí puede deliberar)</li>
+          <li>Votar un promitente comprador sin escritura definitiva</li>
+          <li>Representar por poder a quien sea el Administrador o empleado del barrio</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="organ org-consejo">
+    <div class="organ-hd"><h3>El Consejo</h3><span class="chip c-vig">Vigente</span><span class="ref">§5 · R2 art. 24</span></div>
+    <p class="organ-role">Órgano de control, instrucción y arbitraje entre asambleas. Decide como
+      cuerpo, por mayoría simple de sus 5 miembros. <b>Desde la reforma de 2024 ya no representa
+      legalmente al barrio ni firma en su nombre</b> — y perdió además la facultad de actualizar
+      la cuota de gastos comunes entre asambleas. Eso pasó al Administrador.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>Decide y resuelve</h4>
+        <ul>
+          <li>Controlar el cumplimiento de leyes, reglamentos y resoluciones de Asamblea</li>
+          <li>Resoluciones urgentes o necesarias, para que el Administrador las ejecute</li>
+          <li>Instructivos al Administrador, dentro de las pautas de cada Asamblea</li>
+          <li>Proponer a la Asamblea nuevos reglamentos internos o su reforma</li>
+          <li>Aprobación de proyectos de obra particular, con dictamen de Arquitectura <span class="ref">(propuesto)</span></li>
+          <li>Apercibimientos y multas, con debido proceso previo <span class="ref">(propuesto)</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Controla y responde por</h4>
+        <ul>
+          <li>Funcionamiento del Administrador: movimientos, conciliaciones, mora</li>
+          <li>Cumplimiento de los contratos de seguridad, mantenimiento y servicios</li>
+          <li>Ejecución efectiva de lo resuelto en Asamblea</li>
+          <li>Libro de actas y repositorio documental del barrio</li>
+          <li>Coordinación de las comisiones y tratamiento de sus dictámenes</li>
+          <li>Memoria anual de gestión ante la Asamblea <span class="ref">(propuesto)</span></li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>Fuera de su alcance</h4>
+        <ul>
+          <li><b>Representar legalmente al barrio o firmar contratos</b> — es del Administrador (R2 art. 28)</li>
+          <li>Manejar dinero o ejecutar pagos</li>
+          <li>Actualizar la cuota de gastos comunes entre asambleas</li>
+          <li>Dar órdenes directas al personal salteando al Intendente</li>
+          <li>Decidir materias reservadas a la Asamblea</li>
+          <li>Actuar por miembros individuales, sin reunión ni acta</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="organ org-admin">
+    <div class="organ-hd"><h3>El Administrador</h3><span class="chip c-vig">Vigente</span><span class="ref">§6 · R2 art. 23, 28</span></div>
+    <p class="organ-role">Designado por la Asamblea por <b>períodos de 1 año</b>. Ejecuta, cobra
+      y —desde la reforma de 2024— es quien <b>representa legalmente al barrio y firma en su
+      nombre</b>. Puede ser un propietario o un tercero, persona física o empresa.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>Ejecuta</h4>
+        <ul>
+          <li><b>Representación legal del condominio y firma de contratos</b> (R2 art. 28)</li>
+          <li>Liquidación y emisión de expensas, cuota de membresía y fondo de reserva</li>
+          <li>Recaudación, conciliación bancaria y custodia de fondos</li>
+          <li>Reparaciones urgentes ordinarias por sí mismo; reporta en la Asamblea siguiente</li>
+          <li>Representación en juicio para el cobro de gastos comunes y cuota de membresía</li>
+          <li>Contratación de seguros y sus renovaciones</li>
+          <li>Convocatoria formal de asambleas con la documentación completa</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Estándar de servicio <span class="ref">(propuesto)</span></h4>
+        <ul>
+          <li>Expensas emitidas en día fijo del mes</li>
+          <li>Rendición mensual al Consejo antes del día 15</li>
+          <li>Respuesta a consulta de propietario en 48 h hábiles</li>
+          <li>Documentación a Comisión Fiscal en 5 días hábiles</li>
+          <li>Alerta inmediata al superar el 10% de desvío en un rubro</li>
+          <li>Sin certificado de libre deuda si la cuota de membresía está impaga (R2 art. 16)</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>Fuera de su alcance</h4>
+        <ul>
+          <li>Disponer reparaciones extraordinarias o no urgentes sin autorización previa de Asamblea</li>
+          <li>Definir políticas del barrio; ejecuta lo resuelto</li>
+          <li>Instruir directamente al personal de campo</li>
+          <li>Resolver conflictos entre vecinos</li>
+          <li>Operar cuentas a nombre personal del administrador</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="organ org-intendente">
+    <div class="organ-hd"><h3>El Intendente</h3><span class="chip c-vig">Vigente</span><span class="ref">§7</span></div>
+    <p class="organ-role">Autoridad operativa presente y cara visible del barrio. Traduce las decisiones
+      del Consejo y del Administrador en operación concreta y canaliza hacia arriba lo que pasa
+      en el terreno. No es una figura regulada en R1–R4.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>Opera</h4>
+        <ul>
+          <li>Recorrida diaria: calles, accesos, áreas comunes, luminarias, riego, obras</li>
+          <li>Coordinación y priorización del equipo de mantenimiento</li>
+          <li>Supervisión en campo de proveedores y contratistas</li>
+          <li>Portería y cumplimiento del protocolo de accesos</li>
+          <li>Comunicaciones operativas diarias por el canal oficial</li>
+          <li>Inventario de herramientas, insumos, llaves y activos</li>
+          <li>Inducción al Reglamento de nuevos propietarios e inquilinos</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Registra y reporta</h4>
+        <ul>
+          <li>Reclamos en sistema de tickets: número, responsable, plazo, cierre</li>
+          <li>Mediación de conflictos de baja complejidad; escalamiento del resto</li>
+          <li>Relevamiento documentado de incumplimientos del Reglamento</li>
+          <li>Informe semanal al Consejo: incidentes, tickets, riesgos, compras</li>
+          <li>Informe inmediato ante incidente grave</li>
+          <li>Conformidad de recepción de insumos y servicios</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>Fuera de su alcance</h4>
+        <ul>
+          <li>Autorizar gasto por encima de su caja chica</li>
+          <li>Aplicar multas: releva, documenta y propone</li>
+          <li>Otorgar excepciones al Reglamento por decisión propia</li>
+          <li>Contratar o desvincular personal</li>
+          <li>Cerrar un reclamo sin respuesta al vecino</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="organ org-mant">
+    <div class="organ-hd"><h3>Mantenimiento e Infraestructura</h3><span class="chip c-vig">Vigente</span><span class="ref">§8</span></div>
+    <p class="organ-role">Empresa tercerizada, L–S 8–17: jefe de mantenimiento y tres operarios. El jefe
+      responde por toda la infraestructura física del barrio.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>Responsabilidad técnica</h4>
+        <ul>
+          <li><b>Agua:</b> red, cañerías, pérdidas, presiones, tanques y cisternas</li>
+          <li><b>Osmosis:</b> operación, membranas, filtros, registros de calidad</li>
+          <li><b>Bombas:</b> inspección, reparación, repuestos críticos, rotación</li>
+          <li><b>Electricidad:</b> tableros, red interna, alumbrado, protecciones</li>
+          <li><b>Riego:</b> programación, sectorización, previsión estacional</li>
+          <li><b>Pluviales:</b> cámaras, sumideros, prevención de anegamientos</li>
+          <li><b>Vialidad y perímetro:</b> bacheo, cordones, señalización, cercos</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Gestión exigible</h4>
+        <ul>
+          <li>Plan de mantenimiento preventivo anual: activo, tarea, frecuencia, responsable</li>
+          <li>Inventario de activos críticos con hoja de vida de intervenciones</li>
+          <li>Stock de repuestos críticos definido y controlado</li>
+          <li>Planos <i>as-built</i> de red de agua, eléctrica y riego, propiedad del barrio</li>
+          <li>Especificaciones técnicas para presupuestos y evaluación de ofertas</li>
+          <li>Informe mensual a la Comisión de Infraestructura</li>
+          <li>Normas de higiene y seguridad en el trabajo</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>Riesgo a cubrir</h4>
+        <ul>
+          <li>Conocimiento de la red concentrado en una sola persona, sin documentar</li>
+          <li>Sin guardia pasiva: una bomba rota un domingo no tiene respuesta</li>
+          <li>Registros de calidad del agua no trazables</li>
+          <li>Contrato sin SLA por criticidad ni dotación mínima garantizada</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="organ org-seg">
+    <div class="organ-hd"><h3>Seguridad, accesos y portería</h3><span class="chip c-vig">Vigente</span><span class="ref">§9–10</span></div>
+    <p class="organ-role">Prestador tercerizado a cargo de accesos, perímetro y vigilancia. Opera la
+      portería bajo supervisión del Intendente.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>Opera</h4>
+        <ul>
+          <li>Identificación y registro de personas y vehículos en accesos</li>
+          <li>Verificación de autorizaciones: visitas, proveedores, fletes, servicios</li>
+          <li>Control de ingreso y egreso de materiales y mudanzas</li>
+          <li>Rondas perimetrales y monitoreo de CCTV y alarmas</li>
+          <li>Activación de protocolos: intrusión, incendio, emergencia médica</li>
+          <li>Control de tránsito interno: velocidad, estacionamiento, obra</li>
+          <li>Libro de novedades por turno y parte diario a Intendencia</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Ordenamiento propuesto</h4>
+        <ul>
+          <li>Sistema único de preautorización digital de visitas</li>
+          <li>Registro trazable de ingresos con retención definida</li>
+          <li>Reglas publicadas por carril: residente, visita, proveedor, obra, emergencia</li>
+          <li>Política de datos y video: quién accede, con qué autorización, por cuánto tiempo</li>
+          <li>Simulacros de emergencia al menos anuales</li>
+          <li>Informe mensual: eventos por tipo, tiempos de respuesta, rondas cumplidas</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>No admitido</h4>
+        <ul>
+          <li>Excepciones verbales al protocolo de accesos</li>
+          <li>Instrucciones a portería por vía informal de vecinos</li>
+          <li>Entrega de imágenes sin el marco legal definido</li>
+          <li>Cobertura real inferior a la contratada, sin reporte</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ════════ COMISIONES ════════ -->
+<section id="comisiones">
+  <div class="s-head">
+    <span class="s-num">§11</span>
+    <div class="txt">
+      <h2>Las comisiones</h2>
+      <p class="prose">Las Comisiones <b>no están reguladas en R1–R4</b>: son una propuesta de
+        este documento. Lo que sí tiene base legal es el mecanismo que usarían: Arquitectura y
+        Convivencia ya son "Reglamentos Internos" reales (R3, R4), aprobados en Asamblea —
+        Arquitectura por <b>mayoría especial</b> (R2 art. 9), el resto por <b>mayoría simple</b>
+        (R2 art. 32). Una comisión no reemplaza a la Asamblea: prepara el dictamen técnico que
+        necesita para aprobar o reformar esos reglamentos. Órganos de 3 a 5 propietarios
+        voluntarios, honorarios, con mandato de 2 años y un enlace del Consejo sin voto — no
+        ejecutan obra, no dan órdenes al personal, no autorizan pagos ni representan al barrio
+        (esa representación es del Administrador, R2 art. 28).</p>
+      <div class="legend">
+        <span class="chip c-vig">5 vigentes</span>
+        <span class="chip c-prop">7 propuestas</span>
+        <p>Criterio de prudencia: no crear comisiones sin voluntarios reales. Es preferible
+          fusionar (Seguridad + Convivencia, Comunicación + Datos, Áreas Verdes + Ambiente)
+          que tener comisiones nominales que no producen dictámenes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="coms">
+    <div class="com com-fiscal">
+      <span class="nm">Fiscal</span>
+      <p class="pp">Que el dinero del barrio se recaude, se gaste y se rinda correctamente.
+        Revisa la rendición mensual, audita el circuito de compras, dictamina sobre el
+        presupuesto y el balance, monitorea la mora y custodia el fondo de reserva.</p>
+      <p class="tags">no paga · no autoriza · no liquida — solo controla e informa</p>
+    </div>
+    <div class="com com-legales">
+      <span class="nm">Legales</span>
+      <p class="pp">Que el barrio actúe conforme a derecho y con documentos sólidos. Custodia
+        R1–R4, revisa contratos antes de la firma del Administrador, verifica seguros y ART,
+        diseña el régimen disciplinario y hace seguimiento del concurso de Chamery S.A.</p>
+      <p class="tags">coordina con el letrado del consorcio; no lo reemplaza</p>
+    </div>
+    <div class="com com-verde">
+      <span class="nm">Áreas Verdes</span>
+      <p class="pp">Preservar el paisaje y el arbolado como activo patrimonial. Plan anual de
+        parquización y poda, inventario de arbolado con estado sanitario y riesgo de caída,
+        riego eficiente junto a Infraestructura, y reglas del verde en el frente de cada lote.</p>
+      <p class="tags">el riego es el mayor consumo de agua del barrio</p>
+    </div>
+    <div class="com com-arq">
+      <span class="nm">Arquitectura</span>
+      <p class="pp">Que lo que se construye respete la norma ya vigente (R3): 100 m² mín., FOS
+        35%, FOT 50%, retiro frontal 6 m, altura 3,50 m. Dictamina obras, emite el permiso
+        interno (30 días de plazo, 12 meses de vigencia) y habilita el final de obra.</p>
+      <p class="tags">su reforma exige mayoría especial + protocolización (R2 art. 9)</p>
+    </div>
+    <div class="com com-infra">
+      <span class="nm">Infraestructura y Mantenimiento</span>
+      <p class="pp">Que los servicios críticos no fallen y que la inversión sea planificada.
+        Audita el plan preventivo, monitorea agua, osmosis, bombas, energía y desagües,
+        analiza consumos y elabora el plan plurianual de inversiones.</p>
+      <p class="tags">custodia planos as-built, manuales y mapa de riesgos</p>
+    </div>
+    <div class="com new com-seg">
+      <span class="nm">Seguridad y Accesos</span>
+      <p class="pp">El servicio más sensible y uno de los más caros no tiene hoy comisión espejo.
+        Auditaría el contrato de vigilancia y las rondas, mantendría el protocolo de accesos,
+        revisaría cámaras e iluminación y llevaría la estadística de incidentes.</p>
+      <p class="tags">propuesta · prioridad alta</p>
+    </div>
+    <div class="com new com-conviv">
+      <span class="nm">Convivencia y Mediación</span>
+      <p class="pp">Hoy todo conflicto vecinal termina en el Intendente o en el Consejo, que no es
+        buen árbitro de disputas personales y se desgasta. Mediaría antes del escalamiento e
+        instruiría expedientes con debido proceso y casuística para dar trato igualitario.</p>
+      <p class="tags">propuesta · prioridad alta</p>
+    </div>
+    <div class="com new com-comunic">
+      <span class="nm">Comunicación y Transparencia</span>
+      <p class="pp">Define los canales oficiales y su uso, sostiene el portal del propietario y el
+        repositorio de actas, produce el boletín, administra el <i>onboarding</i> de nuevos
+        vecinos e inquilinos y ordena la comunicación en crisis.</p>
+      <p class="tags">propuesta · prioridad media</p>
+    </div>
+    <div class="com new com-datos">
+      <span class="nm">Tecnología y Datos</span>
+      <p class="pp">Padrón único y confiable —base de toda asamblea válida—, sistema de tickets,
+        voto electrónico verificable, política de protección de datos y continuidad de la
+        información. Evita la dependencia de planillas y cuentas personales.</p>
+      <p class="tags">propuesta · prioridad media</p>
+    </div>
+    <div class="com new com-social">
+      <span class="nm">Deportes, Social y Espacios Comunes</span>
+      <p class="pp">Reglamento de uso y reserva de SUM, canchas, piscina y quincho; calendario de
+        eventos; cuotas de uso; reposición de equipamiento; actividades para chicos y
+        adultos mayores.</p>
+      <p class="tags">propuesta · prioridad media</p>
+    </div>
+    <div class="com new com-ambiente">
+      <span class="nm">Sustentabilidad y Ambiente</span>
+      <p class="pp">Residuos y reciclado, uso eficiente del agua —crítico donde hay osmosis y riego
+        extensivo—, eficiencia energética del alumbrado, control de plagas con criterio
+        ambiental y cumplimiento de efluentes.</p>
+      <p class="tags">propuesta · integrable a Áreas Verdes</p>
+    </div>
+    <div class="com new com-electoral">
+      <span class="nm">Electoral y de Garantías</span>
+      <p class="pp">Comisión <i>ad hoc</i> que se activa en año electoral: valida el padrón habilitado,
+        recibe candidaturas, fiscaliza el acto y el escrutinio y resuelve impugnaciones. Evita
+        que el órgano saliente controle su propia sucesión.</p>
+      <p class="tags">propuesta · se activa cada 2 años</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ MATRIZ ════════ -->
+<section id="matriz">
+  <div class="s-head">
+    <span class="s-num">§12</span>
+    <div class="txt">
+      <h2>Quién decide qué</h2>
+      <p class="prose">Una sola <b>D</b> por fila: toda materia tiene un único decisor. El resto
+        recomienda, ejecuta, es consultado, informado o audita. Donde hoy no está claro quién
+        tiene la D es donde el barrio pierde tiempo y genera conflicto.</p>
+      <div class="legend">
+        <span class="badge d">D</span><span class="ref">decide</span>
+        <span class="badge r">R</span><span class="ref">recomienda / dictamina</span>
+        <span class="badge">E</span><span class="ref">ejecuta</span>
+        <span class="badge">C</span><span class="ref">consultado</span>
+        <span class="badge">I</span><span class="ref">informado</span>
+        <span class="badge">A</span><span class="ref">audita</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="t-scroll">
+    <table class="raci">
+      <thead>
+        <tr>
+          <th scope="col">Materia</th>
+          <th scope="col" class="th-asamblea">Asamblea</th>
+          <th scope="col" class="th-consejo">Consejo</th>
+          <th scope="col" class="th-admin">Admin.</th>
+          <th scope="col" class="th-intendente">Intendente</th>
+          <th scope="col" class="th-mant">Mant.</th>
+          <th scope="col">Comisión</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lead">Presupuesto anual y valor de expensa</td><td><span class="badge d">D</span></td><td><span class="badge r">R</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span> Fiscal</td></tr>
+        <tr><td class="lead">Rendición de cuentas y balance</td><td><span class="badge d">D</span></td><td><span class="badge">A</span></td><td><span class="badge">E</span></td><td class="dash">—</td><td class="dash">—</td><td><span class="badge r">R</span> Fiscal</td></tr>
+        <tr><td class="lead">Designar al Administrador (1 año)</td><td><span class="badge d">D</span></td><td><span class="badge r">R</span></td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td><span class="badge r">R</span> Fiscal, Legales</td></tr>
+        <tr><td class="lead">Representación legal / firma de contratos</td><td class="dash">—</td><td class="dash">—</td><td><span class="badge d">D/E</span></td><td class="dash">—</td><td class="dash">—</td><td><span class="badge r">R</span> Legales (revisa antes)</td></tr>
+        <tr><td class="lead">Elegir o remover el Consejo</td><td><span class="badge d">D</span></td><td class="dash">—</td><td><span class="badge">I</span></td><td><span class="badge">I</span></td><td class="dash">—</td><td><span class="badge r">R</span> Electoral</td></tr>
+        <tr><td class="lead">Expensa extraordinaria u obra mayor</td><td><span class="badge d">D</span></td><td><span class="badge r">R</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span> Infra, Fiscal</td></tr>
+        <tr><td class="lead">Gasto dentro del umbral delegado</td><td><span class="badge">I</span></td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge">C</span></td><td><span class="badge">A</span></td></tr>
+        <tr><td class="lead">Gasto de rutina y caja chica</td><td class="dash">—</td><td><span class="badge">I</span></td><td><span class="badge">E</span></td><td><span class="badge d">D</span></td><td><span class="badge">C</span></td><td><span class="badge">A</span></td></tr>
+        <tr><td class="lead">Selección de prestador de seguridad o mantenimiento</td><td><span class="badge">I</span></td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span> Seguridad, Legales</td></tr>
+        <tr><td class="lead">Plan de mantenimiento preventivo</td><td><span class="badge">I</span></td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span></td><td><span class="badge r">R</span> Infra</td></tr>
+        <tr><td class="lead">Emergencia de infraestructura</td><td><span class="badge">I</span></td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge r">R</span></td><td><span class="badge">E</span></td><td><span class="badge">A</span> Infra</td></tr>
+        <tr><td class="lead">Aprobar proyecto de obra particular</td><td class="dash">—</td><td><span class="badge d">D</span></td><td><span class="badge">I</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span> Arquitectura</td></tr>
+        <tr><td class="lead">Sanción o multa a un propietario</td><td><span class="badge d">D</span> apel.</td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge r">R</span></td><td class="dash">—</td><td><span class="badge r">R</span> Convivencia, Legales</td></tr>
+        <tr><td class="lead">Modificar Reglamento Interno (mayoría simple)</td><td><span class="badge d">D</span></td><td><span class="badge r">R</span></td><td><span class="badge">I</span></td><td><span class="badge">C</span></td><td class="dash">—</td><td><span class="badge r">R</span> Legales</td></tr>
+        <tr><td class="lead">Modificar Reglamento de Arquitectura (mayoría especial)</td><td><span class="badge d">D</span></td><td><span class="badge r">R</span></td><td><span class="badge">I</span></td><td class="dash">—</td><td class="dash">—</td><td><span class="badge r">R</span> Arquitectura</td></tr>
+        <tr><td class="lead">Protocolo de accesos</td><td><span class="badge">I</span></td><td><span class="badge d">D</span></td><td><span class="badge">I</span></td><td><span class="badge">E</span></td><td class="dash">—</td><td><span class="badge r">R</span> Seguridad</td></tr>
+        <tr><td class="lead">Acción judicial y mora avanzada</td><td><span class="badge d">D</span></td><td><span class="badge d">D</span> rutina</td><td><span class="badge">E</span></td><td class="dash">—</td><td class="dash">—</td><td><span class="badge r">R</span> Legales · <span class="badge">A</span> Fiscal</td></tr>
+        <tr><td class="lead">Plan plurianual de inversiones</td><td><span class="badge d">D</span></td><td><span class="badge r">R</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span></td><td><span class="badge r">R</span> Infra</td></tr>
+        <tr><td class="lead">Comunicación oficial a los vecinos</td><td class="dash">—</td><td><span class="badge d">D</span> instituc.</td><td><span class="badge">C</span></td><td><span class="badge d">D</span> operativa</td><td class="dash">—</td><td><span class="badge r">R</span> Comunicación</td></tr>
+        <tr><td class="lead">Contratación o desvinculación de personal</td><td><span class="badge d">D</span> marco</td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge r">R</span></td><td class="dash">—</td><td><span class="badge r">R</span> Legales</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="flow-note">Matriz completa, con las 19 materias relevadas, en
+    <span class="ref">gobernanza-la-juana.md §12</span>.</p>
+</section>
+
+<!-- ════════ UMBRALES ════════ -->
+<section id="umbrales">
+  <div class="s-head">
+    <span class="s-num">§13</span>
+    <div class="txt">
+      <h2>Umbrales de autorización de gasto</h2>
+      <p class="prose">Sobre una base legal real pero incompleta: el texto original de 2023
+        facultaba al Consejo a disponer obras extraordinarias "hasta el monto que anualmente
+        fije la Asamblea al aprobar el presupuesto" (R1 art. 24.iii) — esa frase no se repite
+        literalmente en la reforma de 2024. Mientras no se verifique si sigue vigente, lo que
+        sigue es <b>propuesta de ordenamiento</b>, no cita textual. Tampoco en pesos nominales
+        —se licúan— sino como porcentaje de la recaudación mensual de expensas.</p>
+    </div>
+  </div>
+
+  <div class="t-scroll">
+    <table>
+      <caption>Prohibido fraccionar un gasto para evitar subir de nivel. La Comisión Fiscal
+        puede revisar cualquier gasto, de cualquier nivel, en cualquier momento.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Nivel</th>
+          <th scope="col">Autoriza</th>
+          <th scope="col">Tope propuesto</th>
+          <th scope="col">Requisito</th>
+          <th scope="col">Rinde ante</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="lead">1 · Caja chica</td><td><span class="who who-intendente">Intendente</span></td>
+          <td class="num">≤ 2 %</td>
+          <td>Insumo o reparación menor, con comprobante</td>
+          <td>Administrador, rendición semanal</td>
+        </tr>
+        <tr>
+          <td class="lead">2 · Reparación urgente ordinaria</td><td><span class="who who-admin">Administrador</span></td>
+          <td class="num">≤ 5 %</td>
+          <td>Reporta en la primera Asamblea siguiente (R2 art. 23.i)</td>
+          <td>Consejo, rendición mensual</td>
+        </tr>
+        <tr>
+          <td class="lead">3 · Gasto relevante</td><td><span class="who who-consejo">Consejo</span>, con acta</td>
+          <td class="num">≤ 15 %</td>
+          <td><b>Tres presupuestos</b> + dictamen de la comisión competente</td>
+          <td>Asamblea, por informe</td>
+        </tr>
+        <tr>
+          <td class="lead">4 · Gasto mayor u obra</td><td><span class="who who-asamblea">Asamblea</span></td>
+          <td class="num">sin tope</td>
+          <td>Proyecto, comparativa, dictámenes de Infra/Arquitectura y Fiscal, financiamiento definido</td>
+          <td>Acta de Asamblea</td>
+        </tr>
+        <tr>
+          <td class="lead">E · Emergencia</td><td><span class="who who-intendente">Intendente</span> o <span class="who who-consejo">Consejo</span></td>
+          <td class="num">lo indispensable</td>
+          <td>Riesgo a personas, al patrimonio o a un servicio crítico</td>
+          <td>Consejo en 24 h por escrito + Asamblea siguiente</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="flow-note">Topes expresados como porcentaje de la recaudación mensual total de
+    expensas, por evento.</p>
+</section>
+
+<!-- ════════ FLUJOS ════════ -->
+<section id="flujos">
+  <div class="s-head">
+    <span class="s-num">§14</span>
+    <div class="txt">
+      <h2>Los cuatro flujos que hay que tener escritos</h2>
+      <p class="prose">Un barrio no falla por falta de buenas intenciones: falla porque nadie sabe
+        qué pasa después del primer paso. Estos cuatro recorridos cubren la enorme mayoría
+        de los casos reales.</p>
+    </div>
+  </div>
+
+  <div class="flows">
+    <div class="flow">
+      <h4>Reclamo de un vecino</h4>
+      <div class="steps">
+        <div class="step"><span class="k">1 · entrada</span><span class="v">Canal oficial único; se abre ticket con número, categoría y plazo</span></div>
+        <div class="step"><span class="k">2 · triage</span><span class="v">Intendencia clasifica: operativo, económico, convivencia, técnico o normativo</span></div>
+        <div class="step"><span class="k">3 · resolución</span><span class="v">Mantenimiento ejecuta, Administrador responde o la comisión competente dictamina</span></div>
+        <div class="step"><span class="k">4 · verificación</span><span class="v">El Intendente comprueba la resolución efectiva en el terreno</span></div>
+        <div class="step"><span class="k">5 · cierre</span><span class="v">Respuesta al vecino y constancia de cierre en el ticket</span></div>
+        <div class="step esc"><span class="k">escala</span><span class="v">Consejo si no se resuelve; Asamblea como apelación final</span></div>
+      </div>
+      <p class="flow-note"><b>Regla de oro:</b> ningún reclamo se cierra sin respuesta al vecino.
+        El Consejo recibe el tablero de tickets abiertos y vencidos.</p>
+    </div>
+
+    <div class="flow">
+      <h4>Obra particular de un propietario</h4>
+      <div class="steps">
+        <div class="step"><span class="k">1 · presenta</span><span class="v">Proyecto, documentación y profesional designado</span></div>
+        <div class="step"><span class="k">2 · dictamina</span><span class="v">Arquitectura revisa retiros, alturas, materiales, cercos y servicios</span></div>
+        <div class="step"><span class="k">3 · permiso</span><span class="v">El Consejo aprueba y emite el permiso interno con condiciones</span></div>
+        <div class="step"><span class="k">4 · garantías</span><span class="v">Depósito de garantía, seguros y ART del contratista acreditados</span></div>
+        <div class="step"><span class="k">5 · ejecuta</span><span class="v">Alta en portería; el Intendente controla horarios, acopio y limpieza</span></div>
+        <div class="step"><span class="k">6 · hitos</span><span class="v">Inspecciones en replanteo, estructura, cubierta y cierre</span></div>
+        <div class="step"><span class="k">7 · final</span><span class="v">Final de obra interno y devolución de garantía neta de daños</span></div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <h4>Incidente grave</h4>
+      <div class="steps">
+        <div class="step"><span class="k">1 · detección</span><span class="v">Seguridad, mantenimiento o vecino reportan</span></div>
+        <div class="step"><span class="k">2 · contención</span><span class="v">El Intendente activa protocolo y convoca emergencias si aplica</span></div>
+        <div class="step"><span class="k">3 · aviso</span><span class="v">Consejo —presidencia y vocal del área— notificado de inmediato</span></div>
+        <div class="step"><span class="k">4 · comunicación</span><span class="v">Mensaje oficial en menos de 2 h: qué pasó, qué se hace, qué debe hacer el vecino</span></div>
+        <div class="step"><span class="k">5 · gasto</span><span class="v">Nivel E autorizado; el Administrador ejecuta el pago</span></div>
+        <div class="step"><span class="k">6 · informe</span><span class="v">Por escrito al Consejo dentro de 24 h</span></div>
+        <div class="step"><span class="k">7 · causa raíz</span><span class="v">La comisión competente propone la medida preventiva y su costo</span></div>
+      </div>
+      <p class="flow-note"><b>Vacío a cubrir:</b> fuera del horario de Intendencia —noches, domingos,
+        feriados— no hay autoridad operativa definida. Hace falta guardia pasiva, un teléfono
+        único de emergencia conocido por todos y un proveedor de emergencia habilitado.</p>
+    </div>
+
+    <div class="flow">
+      <h4>Incumplimiento del Reglamento</h4>
+      <div class="steps">
+        <div class="step"><span class="k">1 · registro</span><span class="v">Fecha, hora, hecho y evidencia, por Intendencia o Seguridad</span></div>
+        <div class="step"><span class="k">2 · pedido de cese</span><span class="v">Aviso informal; si cesa, se archiva con constancia</span></div>
+        <div class="step"><span class="k">3 · notificación</span><span class="v">Formal al propietario, no solo al inquilino</span></div>
+        <div class="step"><span class="k">4 · defensa</span><span class="v">Diez días corridos para presentar descargo</span></div>
+        <div class="step"><span class="k">5 · dictamen</span><span class="v">Convivencia y Legales, con antecedentes comparables</span></div>
+        <div class="step"><span class="k">6 · resolución</span><span class="v">Del Consejo, fundada y escrita: archivo, apercibimiento o multa</span></div>
+        <div class="step esc"><span class="k">apelación</span><span class="v">Ante la Asamblea; no suspende el deber de cesar la conducta</span></div>
+      </div>
+      <p class="flow-note">Sin registro no hay sanción; sin notificación no hay defensa; sin defensa
+        la sanción es impugnable. El registro de antecedentes es lo que garantiza trato igual.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ RIESGOS ════════ -->
+<section id="riesgos">
+  <div class="s-head">
+    <span class="s-num">§19</span>
+    <div class="txt">
+      <h2>Riesgos que surgen del relevamiento</h2>
+      <p class="prose">No son hipótesis de manual: salen de la estructura descripta y de la
+        lectura de R1–R4. Los primeros tres deberían entrar en la agenda del Consejo antes de
+        cualquier discusión de mejora.</p>
+    </div>
+  </div>
+
+  <div class="risks">
+    <div class="risk">
+      <p class="rk">Concurso voluntario de Chamery S.A. (la desarrolladora), abierto desde mayo de 2024 <span class="sev alto">Alto</span></p>
+      <p class="mt"><b>Mitigación</b>Verificar el estado actual del concurso y relevar los compromisos fundacionales pendientes (Club, obras comunes, espacios cedidos) y su exigibilidad real.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Guía de Mantenimiento del Club House ausente de la documentación, pese a condicionar la cuota de membresía <span class="sev alto">Alto</span></p>
+      <p class="mt"><b>Mitigación</b>Localizar el documento protocolizado junto a R2 (art. 35); verificar si las 6 instalaciones mínimas exigidas están operativas.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Sin cobertura operativa fuera de L–S 8–17 <span class="sev alto">Alto</span></p>
+      <p class="mt"><b>Mitigación</b>Guardia pasiva, teléfono único de emergencia difundido, proveedor de emergencia habilitado y protocolo escrito.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Conocimiento de la infraestructura concentrado en una persona <span class="sev alto">Alto</span></p>
+      <p class="mt"><b>Mitigación</b>Planos <i>as-built</i>, manuales, hoja de vida de activos y procedimientos documentados, propiedad del barrio.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Calidad del agua y planta de osmosis sin trazabilidad de registros <span class="sev alto">Alto</span></p>
+      <p class="mt"><b>Mitigación</b>Protocolo de análisis periódicos, bitácora de operación y contrato de servicio especializado.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Consejo honorario sobrecargado y memoria institucional que se pierde cada 2 años <span class="sev alto">Alto</span></p>
+      <p class="mt"><b>Mitigación</b>Renovación escalonada, suplentes electos, acta de traspaso obligatoria, comisiones que absorban carga y repositorio documental del barrio.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Mora de expensas sin política firme <span class="sev alto">Alto</span></p>
+      <p class="mt"><b>Mitigación</b>Política de cobranza escrita, escalamiento automático por antigüedad y habilitación al voto condicionada, con base reglamentaria expresa.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Sanciones aplicadas sin debido proceso, por lo tanto impugnables <span class="sev medio">Medio-alto</span></p>
+      <p class="mt"><b>Mitigación</b>Procedimiento de seis pasos del §14.4, registro de antecedentes y trato igualitario verificable.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Ejecución, cobro y representación legal concentrados en el Administrador desde 2024, sin el Consejo como contrapeso de firma <span class="sev medio">Medio-alto</span></p>
+      <p class="mt"><b>Mitigación</b>Doble validación del Consejo sobre el nivel 2 de gasto, Comisión Fiscal activa y auditoría externa periódica.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Padrón de propietarios desactualizado, asambleas impugnables <span class="sev medio">Medio-alto</span></p>
+      <p class="mt"><b>Mitigación</b>Padrón único auditado, con actualización obligatoria en cada transferencia de lote.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Proveedores sin seguros ni cargas sociales al día <span class="sev medio">Medio</span></p>
+      <p class="mt"><b>Mitigación</b>Control documental previo al pago y ART con cláusula de no repetición como condición contractual.</p>
+    </div>
+    <div class="risk">
+      <p class="rk">Comunicación desplazada a grupos informales de vecinos <span class="sev medio">Medio</span></p>
+      <p class="mt"><b>Mitigación</b>Canales oficiales definidos por uso, protocolo de crisis a 2 horas y boletín periódico de gestión.</p>
+    </div>
+  </div>
+  <p class="flow-note">Dieciséis riesgos priorizados, con impacto y mitigación, en
+    <span class="ref">gobernanza-la-juana.md §19</span>.</p>
+</section>
+
+<!-- ════════ PENDIENTES ════════ -->
+<section id="pendientes">
+  <div class="s-head">
+    <span class="s-num">§21</span>
+    <div class="txt">
+      <h2>Lo que este documento no puede resolver</h2>
+      <p class="prose">Esto ya no son supuestos sin base: son los datos que ni siquiera R1–R4
+        resuelven, y que requieren un documento adicional o una verificación notarial. Los
+        marcados en rojo son los que bloquean decisiones importantes.</p>
+    </div>
+  </div>
+
+  <div class="pend">
+    <div>
+      <h4>Marco legal</h4>
+      <ul>
+        <li class="hot">Cotejar el OCR de R1/R2 contra el escaneo original antes de cualquier cita literal o cálculo</li>
+        <li class="hot">Texto de la ley 10.751 — porcentaje exacto de mayoría absoluta y especial</li>
+        <li>Base de cómputo de "mayoría absoluta de sus miembros" (R2 art. 27): ¿total o presentes?</li>
+        <li>Proporción exacta de prorrateo de gastos comunes por unidad (artículo 13)</li>
+        <li>¿Sigue vigente la facultad del Consejo del art. 24.iii original (obras hasta el monto anual que fije la Asamblea)?</li>
+      </ul>
+    </div>
+    <div>
+      <h4>La desarrolladora y el Club</h4>
+      <ul>
+        <li class="hot">Estado actual del concurso voluntario de Chamery S.A.</li>
+        <li class="hot">Ubicación y vigencia de la Guía de Mantenimiento del Club House</li>
+        <li>Grado de avance real de las 6 instalaciones mínimas del Club</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Órganos</h4>
+      <ul>
+        <li>Integración actual del Consejo (5 nombres) y fechas del mandato en curso</li>
+        <li>¿Hay hoy un integrante del Consejo en representación de Chamery S.A.?</li>
+        <li>Identidad y contrato vigente del Administrador actual</li>
+        <li>¿Existen suplentes del Consejo? ¿Cómo se cubren las vacancias?</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Económico</h4>
+      <ul>
+        <li>Presupuesto anual vigente desagregado por rubro</li>
+        <li>Saldo actual del fondo de reserva (base legal: UI 6.691/unidad)</li>
+        <li>Nivel de mora actual y uso efectivo de la hipoteca recíproca</li>
+        <li>Actas de Asamblea posteriores a la del 11/12/2024 (citada en R4)</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Operativo</h4>
+      <ul>
+        <li>Contrato de mantenimiento: alcance, SLA, dotación mínima, repuestos, seguros</li>
+        <li>Contrato de seguridad: dotación, turnos, cobertura real, rondas, tecnología</li>
+        <li class="hot">¿Existe guardia o cobertura fuera de L–S 8–17?</li>
+        <li>Protocolo de accesos escrito y vigente</li>
+        <li>Protocolos de emergencia: incendio, médica, intrusión, corte de servicios</li>
+        <li class="hot">Inventario de activos críticos y planos <i>as-built</i> de redes</li>
+        <li>Registros de calidad de agua de la planta de osmosis</li>
+        <li>Pólizas del consorcio: coberturas, sumas aseguradas, vencimientos</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Información</h4>
+      <ul>
+        <li class="hot">Padrón único: dónde vive, quién lo mantiene, si está auditado</li>
+        <li>Repositorio de actas: ¿es del barrio o está en manos personales?</li>
+        <li>Sistema de reclamos: ¿existe, o se gestiona por mensajería informal?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="next">
+    <div class="nx"><span class="n">Paso 1</span><p>Que Legales coteje cada cita de R1/R2 contra el escaneo notarial original antes de usar este documento en una decisión formal.</p></div>
+    <div class="nx"><span class="n">Paso 2</span><p>Completar los <b>a definir</b> — en especial el estado del concurso de Chamery S.A. y la Guía de Mantenimiento del Club.</p></div>
+    <div class="nx"><span class="n">Paso 3</span><p>Priorizar qué <b>propuesto</b> se adopta: por resolución del Consejo lo que es su competencia; en el orden del día de la próxima Ordinaria lo que es de la Asamblea.</p></div>
+    <div class="nx"><span class="n">Paso 4</span><p>Ratificar en Asamblea el documento consolidado, dejando a salvo la prevalencia de R1–R4 ante cualquier conflicto.</p></div>
+  </div>
+</section>
+
+<footer>
+  <p class="ref">Barrio La Juana · Marco de gobernanza<br>Versión 0.2 — fundada en R1–R4 · 26 de octubre de 2026</p>
+  <p class="ref">Documento maestro: gobernanza-la-juana.md<br>Subordinado a R1–R4 y a la ley 10.751 — no sustituye al asesoramiento jurídico</p>
+</footer>
+
+</div>
+
+</body>
+</html>
