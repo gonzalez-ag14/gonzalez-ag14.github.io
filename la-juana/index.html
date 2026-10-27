@@ -22,7 +22,7 @@
   --c-seg:#8E2438;         --c-seg-bg:#F6E2E5;
 
   /* comisiones sin órgano espejo */
-  --c-legales:#3F4B8C; --c-verde:#3F8F4A; --c-arq:#8A6A3F;
+  --c-legales:#3F4B8C; --c-verde:#3F8F4A; --c-arq:#8A6A3F; --c-arq-bg:#F3EEE3;
   --c-conviv:#B5586F; --c-social:#A9790F;
 
   --accent:var(--c-consejo); --accent-soft:var(--c-consejo-bg);
@@ -50,7 +50,7 @@
     --c-mant:#E39A4E;        --c-mant-bg:#2E2015;
     --c-seg:#E3808F;         --c-seg-bg:#301A1E;
 
-    --c-legales:#9FACEA; --c-verde:#7FD98C; --c-arq:#D1B583;
+    --c-legales:#9FACEA; --c-verde:#7FD98C; --c-arq:#D1B583; --c-arq-bg:#2A2318;
     --c-conviv:#E89AAE; --c-social:#E8C258;
 
     --accent:var(--c-consejo); --accent-soft:var(--c-consejo-bg);
@@ -73,7 +73,7 @@
   --c-mant:#E39A4E;        --c-mant-bg:#2E2015;
   --c-seg:#E3808F;         --c-seg-bg:#301A1E;
 
-  --c-legales:#9FACEA; --c-verde:#7FD98C; --c-arq:#D1B583;
+  --c-legales:#9FACEA; --c-verde:#7FD98C; --c-arq:#D1B583; --c-arq-bg:#2A2318;
   --c-conviv:#E89AAE; --c-social:#E8C258;
 
   --accent:var(--c-consejo); --accent-soft:var(--c-consejo-bg);
@@ -188,6 +188,8 @@ figcaption{font-size:.87rem; color:var(--ink-3); margin-top:14px; max-width:72ch
 .dg-lbl{font-family:var(--mono); font-size:10px; letter-spacing:.05em; fill:var(--ink-3)}
 .dg-down{stroke:var(--ink-2); stroke-width:1.4; fill:none}
 .dg-up{stroke:var(--accent); stroke-width:1.4; fill:none; stroke-dasharray:5 4}
+.dg-peer{stroke:var(--ink-3); stroke-width:1.3; fill:none; stroke-dasharray:1 3.5}
+.dg-arq{fill:var(--c-arq-bg); stroke:var(--c-arq); stroke-width:1.4}
 
 /* ── organ blocks ─────────────────────────────── */
 .organ{border-top:3px solid var(--organ,var(--ink)); padding-top:20px; margin-top:38px}
@@ -330,7 +332,7 @@ footer .ref{line-height:1.7}
     <div class="fact f-asamblea"><dt>Soberano</dt><dd>Asamblea<small>mayoría simple, absoluta o agravada según la materia</small></dd></div>
     <div class="fact f-consejo"><dt>Consejo</dt><dd>5 · 2 años<small>vecinos electos, cargo honorario</small></dd></div>
     <div class="fact f-operacion"><dt>Operación</dt><dd>L–S 8–17<small>Intendente + jefe de mantenimiento y 3 operarios</small></dd></div>
-    <div class="fact f-comisiones"><dt>Comisiones</dt><dd>5 → 12<small>cinco vigentes, siete propuestas</small></dd></div>
+    <div class="fact f-comisiones"><dt>Comisiones</dt><dd>6 → 12<small>seis de primera línea, seis propuestas</small></dd></div>
   </dl>
 
   <div class="legend">
@@ -375,7 +377,7 @@ footer .ref{line-height:1.7}
 
   <figure>
     <div class="fig-scroll">
-      <svg viewBox="0 0 960 646" role="img" aria-label="Diagrama: la Asamblea designa al Consejo y al Administrador; el Consejo controla e instruye al Administrador y al Intendente dentro de las pautas que fija la Asamblea; el Administrador ejecuta, cobra y representa legalmente al barrio; la rendición de cuentas vuelve en sentido inverso hasta la Asamblea.">
+      <svg viewBox="0 0 960 646" role="img" aria-label="Diagrama: la Asamblea designa al Consejo y al Administrador; el Consejo controla e instruye al Administrador y al Intendente dentro de las pautas que fija la Asamblea; el Administrador ejecuta, cobra y representa legalmente al barrio; el Jefe de Seguridad, empleado directo del barrio, trabaja a la par del Intendente y controla a la empresa de seguridad tercerizada; la rendición de cuentas vuelve en sentido inverso hasta la Asamblea.">
         <defs>
           <marker id="aDown" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <polygon points="0,1.2 9,5 0,8.8" fill="var(--ink-2)"></polygon>
@@ -434,10 +436,21 @@ footer .ref{line-height:1.7}
         <text class="dg-t-sm" x="380" y="514" text-anchor="middle">tercerizado · jefe + 3</text>
         <text class="dg-t-sm" x="380" y="530" text-anchor="middle">agua · osmosis · bombas · luz</text>
 
-        <rect class="dg-seg" x="500" y="470" width="180" height="76"></rect>
-        <text class="dg-t" x="590" y="496" text-anchor="middle">SEGURIDAD</text>
-        <text class="dg-t-sm" x="590" y="514" text-anchor="middle">tercerizado</text>
-        <text class="dg-t-sm" x="590" y="530" text-anchor="middle">accesos · perímetro · portería</text>
+        <rect class="dg-seg" x="500" y="470" width="168" height="76"></rect>
+        <text class="dg-t" x="584" y="496" text-anchor="middle">EMPRESA DE</text>
+        <text class="dg-t" x="584" y="511" text-anchor="middle">SEGURIDAD</text>
+        <text class="dg-t-sm" x="584" y="528" text-anchor="middle">tercerizada · accesos</text>
+        <text class="dg-t-sm" x="584" y="542" text-anchor="middle">perímetro · portería</text>
+
+        <rect class="dg-seg" x="692" y="470" width="168" height="76"></rect>
+        <text class="dg-t" x="776" y="496" text-anchor="middle">JEFE DE</text>
+        <text class="dg-t" x="776" y="511" text-anchor="middle">SEGURIDAD</text>
+        <text class="dg-t-sm" x="776" y="528" text-anchor="middle">empleado directo</text>
+        <text class="dg-t-sm" x="776" y="542" text-anchor="middle">del barrio</text>
+
+        <!-- Jefe de Seguridad -> controla a la tercerizada -->
+        <line class="dg-down" x1="692" y1="508" x2="672" y2="508" marker-end="url(#aDown)"></line>
+        <text class="dg-t-sm" x="682" y="462" text-anchor="middle">controla · audita</text>
 
         <!-- Asamblea -> Consejo -->
         <line class="dg-down" x1="462" y1="86" x2="462" y2="160" marker-end="url(#aDown)"></line>
@@ -475,10 +488,10 @@ footer .ref{line-height:1.7}
         <polyline class="dg-down" points="530,398 530,438 592,438 592,462" marker-end="url(#aDown)"></polyline>
         <text class="dg-lbl" x="480" y="428" text-anchor="middle">coordina</text>
 
-        <!-- Administracion -> paga -->
-        <polyline class="dg-down" points="805,386 805,508 688,508" marker-end="url(#aDown)"></polyline>
-        <text class="dg-lbl" x="798" y="480" text-anchor="end">paga sueldos</text>
-        <text class="dg-lbl" x="798" y="496" text-anchor="end">y proveedores</text>
+        <!-- Administracion -> paga (rodea la caja del Jefe de Seguridad por la derecha y abajo) -->
+        <polyline class="dg-down" points="940,382 940,560 584,560 584,546" marker-end="url(#aDown)"></polyline>
+        <text class="dg-lbl" x="932" y="412" text-anchor="end">paga sueldos</text>
+        <text class="dg-lbl" x="932" y="428" text-anchor="end">y proveedores</text>
 
         <!-- legend -->
         <line x1="30" y1="588" x2="930" y2="588" stroke="var(--rule)" stroke-width="1"></line>
@@ -493,7 +506,10 @@ footer .ref{line-height:1.7}
       quien lo designó, y todo caso que exceda su competencia escala. La única vía de
       apelación final es la Asamblea. <b>Desde la reforma de 2024, quien representa
       legalmente al barrio y firma en su nombre es el Administrador — no el Consejo</b>
-      (R2 art. 28).</figcaption>
+      (R2 art. 28). El Jefe de Seguridad es empleado directo del barrio —no de la empresa
+      tercerizada— y <b>trabaja a la par del Intendente</b>, sin que uno dependa del otro;
+      cómo cada operativo rinde cuentas a su comisión de control está en el diagrama de
+      §11.</figcaption>
   </figure>
 </section>
 
@@ -703,7 +719,8 @@ footer .ref{line-height:1.7}
           <li>Stock de repuestos críticos definido y controlado</li>
           <li>Planos <i>as-built</i> de red de agua, eléctrica y riego, propiedad del barrio</li>
           <li>Especificaciones técnicas para presupuestos y evaluación de ofertas</li>
-          <li>Informe mensual a la Comisión de Infraestructura</li>
+          <li><b>Rinde cuentas mensualmente</b> a la Comisión de Infraestructura y Mantenimiento,
+            que lo <b>audita, controla y monitorea</b> — no solo recibe el informe</li>
           <li>Normas de higiene y seguridad en el trabajo</li>
         </ul>
       </div>
@@ -720,20 +737,55 @@ footer .ref{line-height:1.7}
   </article>
 
   <article class="organ org-seg">
-    <div class="organ-hd"><h3>Seguridad, accesos y portería</h3><span class="chip c-vig">Vigente</span><span class="ref">§9–10</span></div>
-    <p class="organ-role">Prestador tercerizado a cargo de accesos, perímetro y vigilancia. Opera la
-      portería bajo supervisión del Intendente.</p>
+    <div class="organ-hd"><h3>Jefe de Seguridad</h3><span class="chip c-prop">Propuesto</span><span class="ref">§9.1</span></div>
+    <p class="organ-role">Empleado <b>directo del barrio</b> — no de la empresa tercerizada.
+      Persona de confianza del Consejo y de la Comisión de Seguridad y Accesos.
+      <b>Trabaja a la par del Intendente</b>: coordinan, ninguno depende del otro.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>Controla y audita</h4>
+        <ul>
+          <li>Desempeño de la empresa de seguridad tercerizada: dotación, rondas, protocolos</li>
+          <li>Diseña y mantiene el protocolo de accesos y los protocolos de emergencia</li>
+          <li>Plan de cámaras e iluminación, y uso correcto del sistema de videovigilancia</li>
+          <li>Estadística de incidentes por tipo, zona y tiempo de respuesta</li>
+          <li>Coordina simulacros de emergencia con la tercerizada, al menos anuales</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Rinde cuentas</h4>
+        <ul>
+          <li>Informe mensual a la Comisión de Seguridad y Accesos y al Consejo</li>
+          <li>Punto de escalamiento inmediato del Intendente ante un incidente</li>
+          <li>Propone el protocolo de accesos; lo aprueba la Comisión</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h4>Fuera de su alcance</h4>
+        <ul>
+          <li>Reemplazar a la tercerizada en la operación diaria — la controla, no la sustituye</li>
+          <li>Contratar o despedir personal de la empresa tercerizada</li>
+          <li>Fijar el protocolo de accesos por sí solo, sin la Comisión</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="organ org-seg">
+    <div class="organ-hd"><h3>Empresa de seguridad (tercerizada)</h3><span class="chip c-vig">Vigente</span><span class="ref">§9.2</span></div>
+    <p class="organ-role">Opera accesos, perímetro y vigilancia, <b>bajo control y auditoría del
+      Jefe de Seguridad</b>. Antes reportaba de forma difusa al Intendente; ahora tiene un
+      contralor dedicado.</p>
     <div class="cols">
       <div class="col">
         <h4>Opera</h4>
         <ul>
           <li>Identificación y registro de personas y vehículos en accesos</li>
           <li>Verificación de autorizaciones: visitas, proveedores, fletes, servicios</li>
-          <li>Control de ingreso y egreso de materiales y mudanzas</li>
           <li>Rondas perimetrales y monitoreo de CCTV y alarmas</li>
           <li>Activación de protocolos: intrusión, incendio, emergencia médica</li>
           <li>Control de tránsito interno: velocidad, estacionamiento, obra</li>
-          <li>Libro de novedades por turno y parte diario a Intendencia</li>
+          <li>Libro de novedades por turno; parte diario al Jefe de Seguridad e Intendencia</li>
         </ul>
       </div>
       <div class="col">
@@ -742,9 +794,7 @@ footer .ref{line-height:1.7}
           <li>Sistema único de preautorización digital de visitas</li>
           <li>Registro trazable de ingresos con retención definida</li>
           <li>Reglas publicadas por carril: residente, visita, proveedor, obra, emergencia</li>
-          <li>Política de datos y video: quién accede, con qué autorización, por cuánto tiempo</li>
-          <li>Simulacros de emergencia al menos anuales</li>
-          <li>Informe mensual: eventos por tipo, tiempos de respuesta, rondas cumplidas</li>
+          <li>Política de datos y video, en conjunto con Legales (ver §9.3)</li>
         </ul>
       </div>
       <div class="col no">
@@ -753,7 +803,7 @@ footer .ref{line-height:1.7}
           <li>Excepciones verbales al protocolo de accesos</li>
           <li>Instrucciones a portería por vía informal de vecinos</li>
           <li>Entrega de imágenes sin el marco legal definido</li>
-          <li>Cobertura real inferior a la contratada, sin reporte</li>
+          <li>Cobertura real inferior a la contratada, sin reporte al Jefe de Seguridad</li>
         </ul>
       </div>
     </div>
@@ -774,23 +824,104 @@ footer .ref{line-height:1.7}
         necesita para aprobar o reformar esos reglamentos. Órganos de 3 a 5 propietarios
         voluntarios, honorarios, con mandato de 2 años y un enlace del Consejo sin voto — no
         ejecutan obra, no dan órdenes al personal, no autorizan pagos ni representan al barrio
-        (esa representación es del Administrador, R2 art. 28).</p>
+        (esa representación es del Administrador, R2 art. 28). Cuatro de ellas tienen, además,
+        una <b>línea de control directa</b> sobre un rol operativo — no es una relación solo
+        informativa, es de auditoría (ver diagrama abajo).</p>
       <div class="legend">
-        <span class="chip c-vig">5 vigentes</span>
-        <span class="chip c-prop">7 propuestas</span>
+        <span class="chip c-vig">6 de primera línea</span>
+        <span class="chip c-prop">6 propuestas</span>
         <p>Criterio de prudencia: no crear comisiones sin voluntarios reales. Es preferible
-          fusionar (Seguridad + Convivencia, Comunicación + Datos, Áreas Verdes + Ambiente)
-          que tener comisiones nominales que no producen dictámenes.</p>
+          fusionar (Comunicación + Datos, Áreas Verdes + Ambiente) que tener comisiones
+          nominales que no producen dictámenes.</p>
       </div>
     </div>
   </div>
 
+  <figure>
+    <div class="fig-scroll">
+      <svg viewBox="0 0 980 440" role="img" aria-label="Diagrama: la Comisión Fiscal recibe la rendición mensual del Administrador; la Comisión de Seguridad y Accesos recibe la rendición del Jefe de Seguridad, quien controla y audita a la empresa de seguridad tercerizada y trabaja a la par del Intendente sin jerarquía entre ambos; la Comisión de Infraestructura y Mantenimiento audita y controla al Jefe de Mantenimiento y la cuadrilla; la Comisión de Arquitectura recibe el dictamen técnico del Arquitecto o Arquitecta del barrio y define procesos en conjunto con la Comisión de Infraestructura.">
+        <!-- FILA 1: FISCAL -->
+        <rect class="dg-admin" x="20" y="20" width="250" height="56"></rect>
+        <text class="dg-t" x="145" y="44" text-anchor="middle">COMISIÓN FISCAL</text>
+        <text class="dg-t-sm" x="145" y="60" text-anchor="middle">audita en cualquier momento</text>
+
+        <line class="dg-up" x1="390" y1="48" x2="270" y2="48" marker-end="url(#aUp)"></line>
+        <text class="dg-lbl" x="330" y="38" text-anchor="middle">rendición mensual</text>
+
+        <rect class="dg-admin" x="390" y="20" width="220" height="56"></rect>
+        <text class="dg-t" x="500" y="44" text-anchor="middle">ADMINISTRADOR</text>
+        <text class="dg-t-sm" x="500" y="60" text-anchor="middle">comprobantes, conciliaciones</text>
+
+        <!-- FILA 2: SEGURIDAD -->
+        <rect class="dg-seg" x="20" y="110" width="250" height="66"></rect>
+        <text class="dg-t" x="145" y="133" text-anchor="middle">COMISIÓN SEGURIDAD</text>
+        <text class="dg-t" x="145" y="149" text-anchor="middle">Y ACCESOS</text>
+
+        <line class="dg-up" x1="390" y1="143" x2="270" y2="143" marker-end="url(#aUp)"></line>
+        <text class="dg-lbl" x="330" y="133" text-anchor="middle">rendición mensual</text>
+
+        <rect class="dg-seg" x="390" y="110" width="220" height="66"></rect>
+        <text class="dg-t" x="500" y="138" text-anchor="middle">JEFE DE SEGURIDAD</text>
+        <text class="dg-t-sm" x="500" y="156" text-anchor="middle">empleado directo del barrio</text>
+
+        <line class="dg-down" x1="610" y1="143" x2="690" y2="143" marker-end="url(#aDown)"></line>
+        <text class="dg-lbl" x="650" y="130" text-anchor="middle">controla</text>
+        <text class="dg-lbl" x="650" y="162" text-anchor="middle">audita</text>
+
+        <rect class="dg-seg" x="690" y="110" width="220" height="66"></rect>
+        <text class="dg-t" x="800" y="133" text-anchor="middle">EMPRESA DE</text>
+        <text class="dg-t" x="800" y="149" text-anchor="middle">SEGURIDAD</text>
+        <text class="dg-t-sm" x="800" y="163" text-anchor="middle">tercerizada</text>
+
+        <line class="dg-peer" x1="500" y1="176" x2="500" y2="206"></line>
+        <text class="dg-lbl" x="512" y="196">a la par</text>
+        <rect class="dg-intendente" x="390" y="206" width="220" height="46"></rect>
+        <text class="dg-t" x="500" y="228" text-anchor="middle">INTENDENTE</text>
+        <text class="dg-t-sm" x="500" y="244" text-anchor="middle">coordinan, sin jerarquía entre sí</text>
+
+        <!-- FILA 3: INFRAESTRUCTURA -->
+        <rect class="dg-mant" x="20" y="280" width="250" height="56"></rect>
+        <text class="dg-t" x="145" y="302" text-anchor="middle">INFRAESTRUCTURA Y</text>
+        <text class="dg-t" x="145" y="318" text-anchor="middle">MANTENIMIENTO</text>
+
+        <line class="dg-up" x1="390" y1="308" x2="270" y2="308" marker-end="url(#aUp)"></line>
+        <text class="dg-lbl" x="330" y="298" text-anchor="middle">audita y controla</text>
+
+        <rect class="dg-mant" x="390" y="280" width="220" height="56"></rect>
+        <text class="dg-t" x="500" y="304" text-anchor="middle">JEFE DE MANTENIMIENTO</text>
+        <text class="dg-t-sm" x="500" y="320" text-anchor="middle">+ cuadrilla (tercerizado)</text>
+
+        <!-- conector Infraestructura <-> Arquitectura -->
+        <line class="dg-peer" x1="145" y1="336" x2="145" y2="360"></line>
+        <text class="dg-lbl" x="160" y="351">procesos conjuntos</text>
+
+        <!-- FILA 4: ARQUITECTURA -->
+        <rect class="dg-mant" x="20" y="360" width="250" height="56"></rect>
+        <text class="dg-t" x="145" y="382" text-anchor="middle">COMISIÓN</text>
+        <text class="dg-t" x="145" y="398" text-anchor="middle">ARQUITECTURA</text>
+
+        <line class="dg-up" x1="390" y1="388" x2="270" y2="388" marker-end="url(#aUp)"></line>
+        <text class="dg-lbl" x="330" y="378" text-anchor="middle">dictamen técnico</text>
+
+        <rect class="dg-arq" x="390" y="360" width="220" height="56"></rect>
+        <text class="dg-t" x="500" y="382" text-anchor="middle">ARQUITECTO/A</text>
+        <text class="dg-t" x="500" y="398" text-anchor="middle">DEL BARRIO</text>
+      </svg>
+    </div>
+    <figcaption>Cuatro comisiones, cuatro líneas de control directo. Las cuatro reciben además
+      revisión del Consejo. El Jefe de Seguridad no está en la cadena de mando del Intendente —
+      ambos coordinan como pares — y tampoco es parte de la empresa tercerizada: es quien la
+      controla. Arquitectura e Infraestructura definen procesos en conjunto porque casi toda obra
+      nueva toca a las dos a la vez.</figcaption>
+  </figure>
+
   <div class="coms">
     <div class="com com-fiscal">
       <span class="nm">Fiscal</span>
-      <p class="pp">Que el dinero del barrio se recaude, se gaste y se rinda correctamente.
-        Revisa la rendición mensual, audita el circuito de compras, dictamina sobre el
-        presupuesto y el balance, monitorea la mora y custodia el fondo de reserva.</p>
+      <p class="pp">Que el dinero del barrio se recaude, se gaste y se rinda correctamente. Es el
+        <b>contralor directo del Administrador</b>: puede pedir comprobantes en cualquier
+        momento, no solo en la rendición mensual. Audita el circuito de compras, dictamina
+        sobre el presupuesto y custodia el fondo de reserva.</p>
       <p class="tags">no paga · no autoriza · no liquida — solo controla e informa</p>
     </div>
     <div class="com com-legales">
@@ -810,23 +941,26 @@ footer .ref{line-height:1.7}
     <div class="com com-arq">
       <span class="nm">Arquitectura</span>
       <p class="pp">Que lo que se construye respete la norma ya vigente (R3): 100 m² mín., FOS
-        35%, FOT 50%, retiro frontal 6 m, altura 3,50 m. Dictamina obras, emite el permiso
-        interno (30 días de plazo, 12 meses de vigencia) y habilita el final de obra.</p>
+        35%, FOT 50%, retiro frontal 6 m, altura 3,50 m. El Arquitecto/a del barrio ejecuta el
+        dictamen técnico de cada proyecto; la Comisión lo revisa, emite el permiso interno (30
+        días de plazo, 12 meses de vigencia) y habilita el final de obra.</p>
       <p class="tags">su reforma exige mayoría especial + protocolización (R2 art. 9)</p>
     </div>
     <div class="com com-infra">
       <span class="nm">Infraestructura y Mantenimiento</span>
       <p class="pp">Que los servicios críticos no fallen y que la inversión sea planificada.
-        Audita el plan preventivo, monitorea agua, osmosis, bombas, energía y desagües,
-        analiza consumos y elabora el plan plurianual de inversiones.</p>
+        <b>Audita, controla y monitorea</b> directamente al Jefe de Mantenimiento y la
+        cuadrilla — no solo recibe su informe. Define procesos en conjunto con Arquitectura,
+        porque casi toda obra nueva demanda agua, energía o desagüe.</p>
       <p class="tags">custodia planos as-built, manuales y mapa de riesgos</p>
     </div>
-    <div class="com new com-seg">
+    <div class="com com-seg">
       <span class="nm">Seguridad y Accesos</span>
-      <p class="pp">El servicio más sensible y uno de los más caros no tiene hoy comisión espejo.
-        Auditaría el contrato de vigilancia y las rondas, mantendría el protocolo de accesos,
-        revisaría cámaras e iluminación y llevaría la estadística de incidentes.</p>
-      <p class="tags">propuesta · prioridad alta</p>
+      <p class="pp">El servicio más sensible y uno de los más caros, hoy con comisión espejo.
+        Recibe la rendición mensual del <b>Jefe de Seguridad</b> —empleado directo del barrio,
+        no de la tercerizada— y aprueba el protocolo de accesos que él propone. El Jefe de
+        Seguridad es quien controla y audita a la empresa tercerizada en el día a día.</p>
+      <p class="tags">contralor directo del Jefe de Seguridad</p>
     </div>
     <div class="com new com-conviv">
       <span class="nm">Convivencia y Mediación</span>
@@ -917,8 +1051,11 @@ footer .ref{line-height:1.7}
         <tr><td class="lead">Gasto de rutina y caja chica</td><td class="dash">—</td><td><span class="badge">I</span></td><td><span class="badge">E</span></td><td><span class="badge d">D</span></td><td><span class="badge">C</span></td><td><span class="badge">A</span></td></tr>
         <tr><td class="lead">Selección de prestador de seguridad o mantenimiento</td><td><span class="badge">I</span></td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span> Seguridad, Legales</td></tr>
         <tr><td class="lead">Plan de mantenimiento preventivo</td><td><span class="badge">I</span></td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span></td><td><span class="badge r">R</span> Infra</td></tr>
+        <tr><td class="lead">Auditoría directa del Jefe de Mantenimiento y cuadrilla</td><td class="dash">—</td><td><span class="badge">I</span></td><td class="dash">—</td><td><span class="badge">C</span></td><td class="dash">—</td><td><span class="badge d">D/A</span> Infra</td></tr>
+        <tr><td class="lead">Control día a día de la empresa de seguridad tercerizada</td><td class="dash">—</td><td><span class="badge d">D</span> contrato</td><td class="dash">—</td><td><span class="badge">C</span> par</td><td><span class="badge">E</span> Jefe Seg.</td><td><span class="badge r">R</span> Seguridad</td></tr>
         <tr><td class="lead">Emergencia de infraestructura</td><td><span class="badge">I</span></td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge r">R</span></td><td><span class="badge">E</span></td><td><span class="badge">A</span> Infra</td></tr>
         <tr><td class="lead">Aprobar proyecto de obra particular</td><td class="dash">—</td><td><span class="badge d">D</span></td><td><span class="badge">I</span></td><td><span class="badge">E</span></td><td><span class="badge">C</span></td><td><span class="badge r">R</span> Arquitectura</td></tr>
+        <tr><td class="lead">Dictamen técnico de un proyecto de obra</td><td class="dash">—</td><td><span class="badge">I</span></td><td class="dash">—</td><td><span class="badge">C</span></td><td class="dash">—</td><td><span class="badge r">R</span> Arquitecto/a</td></tr>
         <tr><td class="lead">Sanción o multa a un propietario</td><td><span class="badge d">D</span> apel.</td><td><span class="badge d">D</span></td><td><span class="badge">E</span></td><td><span class="badge r">R</span></td><td class="dash">—</td><td><span class="badge r">R</span> Convivencia, Legales</td></tr>
         <tr><td class="lead">Modificar Reglamento Interno (mayoría simple)</td><td><span class="badge d">D</span></td><td><span class="badge r">R</span></td><td><span class="badge">I</span></td><td><span class="badge">C</span></td><td class="dash">—</td><td><span class="badge r">R</span> Legales</td></tr>
         <tr><td class="lead">Modificar Reglamento de Arquitectura (mayoría especial)</td><td><span class="badge d">D</span></td><td><span class="badge r">R</span></td><td><span class="badge">I</span></td><td class="dash">—</td><td class="dash">—</td><td><span class="badge r">R</span> Arquitectura</td></tr>
@@ -930,7 +1067,7 @@ footer .ref{line-height:1.7}
       </tbody>
     </table>
   </div>
-  <p class="flow-note">Matriz completa, con las 19 materias relevadas, en
+  <p class="flow-note">Matriz completa, con las 22 materias relevadas, en
     <span class="ref">gobernanza-la-juana.md §12</span>.</p>
 </section>
 
@@ -1192,7 +1329,8 @@ footer .ref{line-height:1.7}
       <h4>Operativo</h4>
       <ul>
         <li>Contrato de mantenimiento: alcance, SLA, dotación mínima, repuestos, seguros</li>
-        <li>Contrato de seguridad: dotación, turnos, cobertura real, rondas, tecnología</li>
+        <li>Contrato de la empresa de seguridad tercerizada: dotación, turnos, rondas</li>
+        <li class="hot">Jefe de Seguridad y Arquitecto/a del barrio: ¿existen hoy o son roles a crear?</li>
         <li class="hot">¿Existe guardia o cobertura fuera de L–S 8–17?</li>
         <li>Protocolo de accesos escrito y vigente</li>
         <li>Protocolos de emergencia: incendio, médica, intrusión, corte de servicios</li>
